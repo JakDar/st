@@ -295,6 +295,17 @@ void
 swapcolors(const Arg *dummy)
 {
 	usealtcolors = !usealtcolors;
+	if (usealtcolors) {
+		defaultfg = 12;
+		defaultbg = 8;
+		defaultcs = 258;
+		defaultrcs = 0;
+	} else {
+		defaultfg = 257;
+		defaultbg = 256;
+		defaultcs = 14;
+		defaultrcs = 15;
+	}
 	xloadcols();
 	redraw();
 }
