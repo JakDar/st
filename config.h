@@ -8,7 +8,7 @@
 static char *font = "mono:pixelsize=16:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-	"Noto Color Emoji:pixelsize=16:antialias=true:autohint=true", // requires `yay -S libxft-bgra` on arch
+	"Noto Color Emoji:pixelsize=15:antialias=true:autohint=true", // requires `yay -S libxft-bgra` on arch
 	/* "Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true" */
 };
 
