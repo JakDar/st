@@ -141,9 +141,9 @@ static const char *altcolorname[] = {
 	"#073642",  /*  7: white    */
 	"#fdf6e3",  /*  8: brblack  */
 	"#cb4b16",  /*  9: brred    */
-	"#93a1a1",  /* 10: brgreen  */
-	"#839496",  /* 11: bryellow */
-	"#657b83",  /* 12: brblue   */
+	"#298d00",  /* 10: brgreen  */
+	"#d7cd60",  /* 11: bryellow */
+	"#036081",  /* 12: brblue   */
 	"#6c71c4",  /* 13: brmagenta*/
 	"#586e75",  /* 14: brcyan   */
 	"#002b36",  /* 15: brwhite  */
