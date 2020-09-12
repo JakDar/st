@@ -57,6 +57,7 @@ static void clippaste(const Arg *);
 static void numlock(const Arg *);
 static void selpaste(const Arg *);
 static void swapcolors(const Arg *);
+static void toggleligatures(const Arg *);
 static void zoom(const Arg *);
 static void zoomabs(const Arg *);
 static void zoomreset(const Arg *);
@@ -261,6 +262,7 @@ static char *opt_title = NULL;
 static int oldbutton = 3; /* button event on startup: 3 = release */
 
 int usealtcolors = 0; /* 1 to use alternate palette */
+int useligatures = 1; /* 0 to not use  ligatures by default*/
 
 void
 clipcopy(const Arg *dummy)
@@ -319,6 +321,12 @@ swapcolors(const Arg *dummy)
 	Arg args [] = {{.f = +1}, {.f = -1}};
 	zoom(&args[0]);
 	zoom(&args[1]);
+}
+
+void
+toggleligatures(const Arg *dummy)
+{
+	useligatures = !useligatures;
 }
 
 void
@@ -1488,7 +1496,9 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
 	}
 
 	/* Harfbuzz transformation for ligatures. */
-	hbtransform(specs, glyphs, len, x, y);
+	if(useligatures){
+		hbtransform(specs, glyphs, len, x, y);
+	}
 
 	return numspecs;
 }

@@ -8,7 +8,7 @@
 static char *font = "Hack FC Ligatured:pixelsize=16:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-	"Noto Color Emoji:pixelsize=15:antialias=true:autohint=true", // requires `yay -S libxft-bgra` on arch
+	"Noto Color Emoji:pixelsize=16:antialias=true:autohint=true", // requires `yay -S libxft-bgra` on arch
 	/* "Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true" */
 };
 
@@ -243,6 +243,7 @@ static Shortcut shortcuts[] = {
 	{ MODKEY,               XK_l,           externalpipe,   {.v = openurlcmd } },
 	{ MODKEY,               XK_y,           externalpipe,   {.v = copyurlcmd } },
 	{ ShiftMask,            XK_F6,          swapcolors,     {.i =  0} },
+	{ ShiftMask,            XK_F7,          toggleligatures,{.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ MODKEY,               XK_k,           kscrollup,      {.i =  1} },
