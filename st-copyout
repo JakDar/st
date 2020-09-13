@@ -4,13 +4,13 @@
 # xclip required for this script.
 # By Jaywalker and Luke
 tmpfile=$(mktemp /tmp/st-cmd-output.XXXXXX)
-touch /home/owner/dupa
-# trap 'rm "$tmpfile"' 0 1 15
+trap 'rm "$tmpfile"' 0 1 15
 sed -n "w $tmpfile"
 
-#HACK: my tmux modeline  starts with λ - remove it
-last_line=$(wc -l < "$tmpfile")
-awk -v last_line="$last_line" '/^─*$/{next}  /^λ/{if(NR!=last_line){print};next} {print}'  "$tmpfile" > "$tmpfile.bak"
+
+#HACK: remove tmux modeline if present
+# without tmux last line is new terminal prompt, so it shouldn't break anything.
+head -n -1 < "$tmpfile" > "$tmpfile.bak"
 mv "$tmpfile.bak" "$tmpfile"
 
 sed -i 's/\x0//g' "$tmpfile"
