@@ -327,6 +327,9 @@ void
 toggleligatures(const Arg *dummy)
 {
 	useligatures = !useligatures;
+	Arg args [] = {{.f = +1}, {.f = -1}};
+	zoom(&args[0]);
+	zoom(&args[1]);
 }
 
 void
