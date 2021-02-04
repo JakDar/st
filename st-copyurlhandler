@@ -1,0 +1,11 @@
+#!/bin/sh
+urlregex="(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?#=_-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*|[a-zA-Z0-9.]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+)"
+
+# First remove linebreaks, sidebars and other:
+urls="$(sed 's/.*│//g' | tr -d '\n' | tr -d '™' |
+	grep -aEo "$urlregex" | uniq |
+	sed 's/^www./http:\/\/www\./g')"
+
+[ -z "$urls" ] && exit
+
+echo "$urls" | dmenu -i -p 'Copy which url?' -l 10 | tr -d '\n' | xclip -selection clipboard
