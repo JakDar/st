@@ -1,15 +1,27 @@
 #!/bin/sh
 
-urlregex="(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./@$&%?$\#=_~-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)"
+gitrepo="git@(github\.com|bitbucket\.com|gitlab\.com):[a-zA-Z0-9._]+/[a-zA-Z0-9._]+"
+email="[a-zA-Z0-9.]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+"
+magnet="(magnet:\\?xt=urn:btih:)[a-zA-Z0-9]+(&[a-zA-Z0-9./:&%?#=_-]*)?"
+website="((http|https|git)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?#=_-]*"
+
+if [ "$1" = "--copy" ]; then
+	urlregex="($gitrepo)|($website)|($magnet)|($email)"
+else
+	urlregex="($website)|($magnet)"
+fi
 
 # First remove linebreaks and mutt sidebars:
 urls="$(sed 's/.*│//g' | tr -d '\n' |
 	grep -aEo "$urlregex" | # grep only urls as defined above.
-	uniq | # Ignore neighboring duplicates.
-	sed 's/^www./http:\/\/www\./g')"
+	uniq |                  # Ignore neighboring duplicates.
+	sed 's/^www./https:\/\/www\./g')"
 
 [ -z "$urls" ] && exit
 
-chosen="$(echo "$urls" | dmenu -i -p 'Follow which url?' -l 10)"
-
-setsid xdg-open "$chosen" >/dev/null 2>&1 &
+if [ "$1" = "--copy" ]; then
+	echo "$urls" | dmenu -i -p 'Copy which url?' -l 10 | xclip -i -sel clipboard
+else
+	chosen="$(echo "$urls" | dmenu -i -p 'Follow which url?' -l 10)"
+	setsid xdg-open "$chosen" >/dev/null 2>&1 &
+fi

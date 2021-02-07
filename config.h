@@ -219,7 +219,7 @@ static MouseShortcut mshortcuts[] = {
 
 static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler", "externalpipe", NULL };
 
-static char *copyurlcmd[] = { "/bin/sh", "-c", "st-copyurlhandler", "externalpipe", NULL };
+static char *copyurlcmd[] = { "/bin/sh", "-c", "st-urlhandler --copy", "externalpipe", NULL };
 
 static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
 
