@@ -3,7 +3,7 @@
 gitrepo="git@(github\.com|bitbucket\.com|gitlab\.com):[a-zA-Z0-9._]+/[a-zA-Z0-9._]+"
 email="[a-zA-Z0-9.]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+"
 magnet="(magnet:\\?xt=urn:btih:)[a-zA-Z0-9]+(&[a-zA-Z0-9./:&%?#=_-]*)?"
-website="((http|https|git)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?#=_-]*"
+website="((http|https|git)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9+./&%?#=_-]*"
 
 if [ "$1" = "--copy" ]; then
 	urlregex="($gitrepo)|($website)|($magnet)|($email)"
