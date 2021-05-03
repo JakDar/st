@@ -105,22 +105,22 @@ float alpha = 0.9;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* solarized dark */
-	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
-	"#cc241d",
-	"#98971a",
-	"#d79921",
-	"#458588",
-	"#b16286",
-	"#689d6a",
-	"#a89984",
-	"#928374",
-	"#fb4934",
-	"#b8bb26",
-	"#fabd2f",
-	"#83a598",
-	"#d3869b",
-	"#8ec07c",
-	"#ebdbb2",
+	"#282828",  /*  0: black hard contrast: #1d2021 / soft contrast: #32302f */
+	"#cc241d",  /*  1: red      */
+	"#98971a",  /*  2: green    */
+	"#d79921",  /*  3: yellow   */
+	"#458588",  /*  4: blue     */
+	"#b16286",  /*  5: magenta  */
+	"#689d6a",  /*  6: cyan     */
+	"#a89984",  /*  7: white    */
+	"#928374",  /*  8: brblack  */
+	"#fb4934",  /*  9: brred    */
+	"#b8bb26",  /* 10: brgreen  */
+	"#fabd2f",  /* 11: bryellow */
+	"#83a598",  /* 12: brblue   */
+	"#d3869b",  /* 13: brmagenta*/
+	"#8ec07c",  /* 14: brcyan   */
+	"#ebdbb2",  /* 15: brwhite  */
 	[255] = 0,
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#282828",   /* 256 -> bg */
